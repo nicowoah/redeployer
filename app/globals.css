@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fafafa;
+  color: #0f0f11;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #fafafa; }
+::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.55); }
+
+::selection {
+  background: rgba(59, 130, 246, 0.18);
+  color: #0f0f11;
+}
+
+/* Keyboard focus indicator — applies only to keyboard navigation, not mouse clicks */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@layer utilities {
+  /* Accent gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card soft shadow lift on hover (shadow only — scale/y handled by Framer Motion) */
+  .card-glow {
+    transition: box-shadow 0.2s ease-out;
+  }
+  .card-glow:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.11);
+  }
+
+  /* Button accent shadow on hover */
+  .btn-glow:hover {
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.38);
+  }
+
+  .divider-subtle {
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+    height: 1px;
+  }
+}
