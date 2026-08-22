@@ -5,53 +5,67 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const FAQS = [
   {
-    q: "What's included in a website build?",
-    a: "Every build includes custom design (no templates), full development, mobile-responsive layout, basic on-page SEO, and contact form integration. You own the codebase outright. We handle hosting setup and domain connection as part of the process, and hosting is included with our Continuous Support plans.",
+    q: 'How can there be no setup fee?',
+    a: "Because we make our money on the monthly, not on a big invoice upfront. That only works if you stick around, which means we're motivated to keep your site and your booking system actually earning. The build cost is spread across the plan instead of landing on you before you've seen a single new client.",
   },
   {
-    q: 'How long does a project take?',
-    a: 'Most small projects launch in as little as 2-3 days. Larger builds with custom AI automation may take 2-3 weeks depending on scope. We give you a clear timeline estimate upfront, and we stick to it.',
+    q: "What's the difference between the two plans?",
+    a: "Redeployer Starter ($149/mo) is the storefront: a custom site up to 5 pages, hosting, SSL, uptime monitoring, Google Business Profile setup, and a basic booking request form where clients ask for a time and you confirm it manually. The Redeployer System ($299/mo) runs your front desk on top of that: full ongoing local SEO, booking synced straight to your calendar, missed-call text-back, automated SMS and email reminders, review requests after sessions, and an instant response to every new inquiry.",
   },
   {
-    q: 'What is Continuous Support?',
-    a: 'Continuous Support is our monthly retainer for ongoing updates, improvements, and priority help after your project launches. We offer multiple tiers depending on how much support you need. All tiers are no lock-in and month-to-month, so you can cancel anytime. It is the easiest way to keep your site and systems running smoothly without hiring in-house.',
+    q: 'Is there a guarantee?',
+    a: "The Redeployer System comes with a 30-day setup guarantee: if you're not happy with how your site and system are built in the first 30 days, we'll refund you in full. Beyond that, there's nothing to guarantee against, because there's no setup fee and no contract. If it stops being worth $299 a month, you cancel.",
   },
   {
-    q: "What's the AI automation service?",
-    a: "We build custom automation workflows tailored to your business: automatic lead follow-up emails, appointment booking, CRM integrations, and internal ops tools. Everything is built around what you actually need.",
+    q: 'What is missed-call text-back?',
+    a: "When you're with a client and can't pick up, the caller automatically gets a text within seconds: a friendly note that you'll be right with them, plus a booking link. Most people who reach voicemail just call the next business on the list. This is the single cheapest way to stop losing them.",
   },
   {
-    q: 'What is the money-back guarantee?',
-    a: "If you're not satisfied with the result within the first 30 days, we'll make it right. If we can't, you get your money back. We stand behind our work and want every client to feel confident working with us.",
+    q: 'What does "inquiries answered instantly" actually mean?',
+    a: "Every form fill, message, and missed call gets an immediate response, day or night, with a link to book. You are not sitting down to write replies. Speed is most of the battle here: the business that answers first usually gets the job.",
   },
   {
-    q: 'Are there any long-term contracts?',
-    a: "No. We offer retainers for Continuous Support with no hard lock-ins. It's month-to-month, and you can cancel anytime. Project work is scoped and priced upfront with no hidden commitments.",
+    q: 'How long until my site is live?',
+    a: 'Most sites go live within a few days of the discovery call, depending on how quickly we can get your content, photos, and Google Business Profile access. You review the site before it ships, and nothing goes live until you sign off.',
+  },
+  {
+    q: 'Am I locked into a contract?',
+    a: "No. Both plans are month-to-month and you can cancel anytime. There's no setup fee to recoup and no minimum term, so if the site and the system aren't pulling their weight, you're free to walk.",
+  },
+  {
+    q: 'Can I start on Starter and upgrade later?',
+    a: "Yes, and plenty of people do. Start at $149/mo, get the site live, then move up to the full system any month. There's no new setup fee and no rebuild. We just switch the front-desk layer on.",
+  },
+  {
+    q: 'What if I already have a website?',
+    a: "It depends which plan you're on. On Starter we rebuild it for you, included at no extra cost. On the System we can leave your current site in place and add our tools to it instead, so your booking, reminders, missed-call text-back, and review requests all run on the site you already have. Bring it to the call and we'll tell you honestly which is the better move.",
   },
   {
     q: 'How do I get started?',
-    a: "Book a free 30-minute call using the button on this page. We'll talk through your goals and put together a scope and quote within 24 hours. No pressure, no pitch deck. Just an honest conversation.",
+    a: "Book a free 30-minute call using the button on this page. We'll talk through your goals and send you a written scope within 24 hours. No pressure, no pitch deck. Just an honest conversation.",
   },
 ]
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
+function FAQItem({ question, answer, id }: { question: string; answer: string; id: string }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="border-b border-gray-100 last:border-0">
+    <div className="border-b border-[rgba(0,0,0,0.08)] last:border-0">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-6 text-left gap-8 group"
         aria-expanded={open}
+        aria-controls={`faq-panel-${id}`}
+        id={`faq-trigger-${id}`}
       >
-        <span className="font-display font-medium text-base md:text-[1.05rem] text-text-primary group-hover:text-accent transition-colors duration-200">
+        <span className="font-display font-medium text-base md:text-[1.05rem] text-text-primary group-hover:text-accent-ink transition-colors duration-200">
           {question}
         </span>
         <div
           className={`flex-shrink-0 w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
             open
               ? 'border-accent bg-accent text-white'
-              : 'border-gray-200 text-text-muted'
+              : 'border-[rgba(0,0,0,0.12)] text-text-muted'
           }`}
           aria-hidden="true"
         >
@@ -73,6 +87,9 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         {open && (
           <motion.div
             key="answer"
+            id={`faq-panel-${id}`}
+            role="region"
+            aria-labelledby={`faq-trigger-${id}`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -91,35 +108,32 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" aria-labelledby="faq-heading" className="py-20 bg-surface relative">
+    <section id="faq" aria-labelledby="faq-heading" className="scroll-mt-20 py-20 bg-surface relative">
       <div className="divider-subtle absolute top-0 left-0 right-0" aria-hidden="true" />
       <div className="divider-subtle absolute bottom-0 left-0 right-0" aria-hidden="true" />
 
       <div className="max-w-3xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.55 }}
           className="text-center mb-12"
         >
-          <p className="font-sans text-xs font-semibold uppercase tracking-widest text-accent mb-4">
-            FAQ
-          </p>
-          <h2 id="faq-heading" className="font-display font-bold text-display text-text-primary">
+          <h2 id="faq-heading" className="font-display font-semibold text-display text-text-primary">
             Common Questions
           </h2>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.55, delay: 0.1 }}
-          className="rounded-2xl bg-white border border-[rgba(26,26,26,0.10)] shadow-card px-8"
+          className="rounded-xl bg-white border border-[rgba(0,0,0,0.10)] shadow-card px-8"
         >
-          {FAQS.map(({ q, a }) => (
-            <FAQItem key={q} question={q} answer={a} />
+          {FAQS.map(({ q, a }, i) => (
+            <FAQItem key={q} question={q} answer={a} id={String(i)} />
           ))}
         </motion.div>
       </div>

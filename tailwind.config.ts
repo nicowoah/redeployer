@@ -9,24 +9,36 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: '#fafafa',
-        surface: '#f2f4f8',
-        accent: '#3b82f6',
-        'text-primary': '#0f0f11',
-        'text-secondary': '#5c5c78',
-        'text-muted': '#9494ac',
+        // Warm neutral ground — no cool grays anywhere
+        bg: '#ffffff',
+        surface: '#f9f9f8',
+
+        // Blue splits by role: `accent` fills (white text = 4.57:1),
+        // `accent-ink` is the text/link weight (6.8:1) since the fill
+        // tone is too light for small type.
+        accent: '#0075de',
+        'accent-ink': '#005bab',
+        'accent-tint': '#e6f3fe',
+
+        'text-primary': '#1a1a18',
+        'text-secondary': '#615d59',
+        'text-muted': '#6b6862',
       },
       fontFamily: {
-        display: ['var(--font-syne)', 'sans-serif'],
-        sans: ['var(--font-inter)', 'sans-serif'],
+        display: ['var(--font-inter-tight)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        hero: ['clamp(2.25rem, 4.5vw, 4rem)', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
-        display: ['clamp(2rem, 4vw, 3.5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+        // Restrained scale with tight optical tracking
+        hero: ['clamp(2.25rem, 4vw, 3.5rem)', { lineHeight: '1.08', letterSpacing: '-0.033em' }],
+        display: ['clamp(1.75rem, 3vw, 2.5rem)', { lineHeight: '1.14', letterSpacing: '-0.025em' }],
+      },
+      borderRadius: {
+        DEFAULT: '8px',
       },
       boxShadow: {
-        card: '0 2px 12px rgba(0, 0, 0, 0.07)',
-        'btn-accent': '0 4px 18px rgba(59, 130, 246, 0.35)',
+        // Depth comes from hairlines, not glow
+        card: '0 1px 2px rgba(0, 0, 0, 0.04)',
       },
     },
   },

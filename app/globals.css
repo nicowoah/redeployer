@@ -7,54 +7,56 @@ html {
 }
 
 body {
-  background-color: #fafafa;
-  color: #0f0f11;
+  background-color: #ffffff;
+  color: #1a1a18;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #fafafa; }
-::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.55); }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f9f9f8; }
+::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.16); border-radius: 8px; border: 3px solid #f9f9f8; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.28); }
 
 ::selection {
-  background: rgba(59, 130, 246, 0.18);
-  color: #0f0f11;
+  background: #e6f3fe;
+  color: #1a1a18;
 }
 
 /* Keyboard focus indicator — applies only to keyboard navigation, not mouse clicks */
 *:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #0075de;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 @layer utilities {
-  /* Accent gradient text */
-  .text-gradient {
-    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Card soft shadow lift on hover (shadow only — scale/y handled by Framer Motion) */
-  .card-glow {
-    transition: box-shadow 0.2s ease-out;
-  }
-  .card-glow:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.11);
-  }
-
-  /* Button accent shadow on hover */
-  .btn-glow:hover {
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.38);
+  /* Emphasis inside headlines. Flat colour, no gradient — depth in this
+     system comes from weight and tracking, never from effects. */
+  .text-highlight {
+    color: #0075de;
   }
 
   .divider-subtle {
-    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+    background: rgba(0, 0, 0, 0.08);
     height: 1px;
+  }
+}
+
+/* Respect reduced-motion: kill CSS transitions, animations, and smooth scroll.
+   Framer Motion is handled separately via MotionConfig reducedMotion="user". */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

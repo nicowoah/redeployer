@@ -4,3 +4,11 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Netlify's default subdomain serves the same content as the custom domain,
+# which splits SEO across two public copies. Send it to the canonical host.
+[[redirects]]
+  from = "https://redeployer.netlify.app/*"
+  to = "https://redeployer.co/:splat"
+  status = 301
+  force = true

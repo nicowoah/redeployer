@@ -12,7 +12,7 @@ const SERVICES = [
     ),
     title: 'Website Builds',
     description:
-      'Custom-built sites designed to convert, launched fast. No templates, no cookie-cutters. Just a site that works as hard as you do.',
+      'A custom site designed around your business and built to convert. Clean, fast, and live in days rather than months.',
   },
   {
     icon: (
@@ -52,23 +52,20 @@ const cardVariant = {
 
 export default function Services() {
   return (
-    <section id="services" aria-labelledby="services-heading" className="py-20 bg-surface relative">
+    <section id="services" aria-labelledby="services-heading" className="scroll-mt-20 py-20 bg-surface relative">
       <div className="divider-subtle absolute top-0 left-0 right-0" aria-hidden="true" />
       <div className="divider-subtle absolute bottom-0 left-0 right-0" aria-hidden="true" />
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.55 }}
           className="mb-16 text-center"
         >
-          <p className="font-sans text-xs font-semibold uppercase tracking-widest text-accent mb-4">
-            Services
-          </p>
-          <h2 id="services-heading" className="font-display font-bold text-display text-text-primary mb-4">
+          <h2 id="services-heading" className="font-display font-semibold text-display text-text-primary mb-4">
             What We Do
           </h2>
           <p className="font-sans text-text-secondary text-lg leading-relaxed max-w-xl mx-auto">
@@ -89,11 +86,10 @@ export default function Services() {
             <motion.div
               key={svc.title}
               variants={cardVariant}
-              whileHover={{ scale: 1.02, y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
-              className="group relative p-7 rounded-2xl bg-white border border-[rgba(26,26,26,0.10)] shadow-card card-glow cursor-default"
+              className="group relative p-7 rounded-xl bg-white border border-[rgba(0,0,0,0.10)] shadow-card"
             >
               <div
-                className="w-11 h-11 rounded-xl bg-accent/8 border border-accent/15 flex items-center justify-center text-accent mb-5 group-hover:bg-accent/12 group-hover:border-accent/25 transition-all duration-200"
+                className="w-11 h-11 rounded-lg bg-accent-tint flex items-center justify-center text-accent-ink mb-5 transition-colors duration-150"
                 aria-hidden="true"
               >
                 {svc.icon}

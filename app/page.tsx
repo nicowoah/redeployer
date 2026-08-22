@@ -10,16 +10,20 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-bg overflow-x-hidden">
+    <div className="min-h-screen bg-bg overflow-x-hidden">
       <Nav />
-      <Hero />
-      <Services />
-      <HowItWorks />
-      <Pricing />
-      <About />
-      <FAQ />
-      <FinalCTA />
+
+      <main id="main">
+        <Hero />
+        <Services />
+        <HowItWorks />
+        <Pricing />
+        <About />
+        <FAQ />
+        <FinalCTA />
+      </main>
+
       <Footer />
-    </main>
+    </div>
   )
 }
