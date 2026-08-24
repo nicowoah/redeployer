@@ -23,6 +23,19 @@ const config: Config = {
         'text-primary': '#1a1a18',
         'text-secondary': '#615d59',
         'text-muted': '#6b6862',
+
+        // Hairlines carry all separation in this system — depth comes from
+        // 1px edges, not shadow. Four steps, by role:
+        //   soft   dividers and section edges
+        //   DEFAULT cards, chips, controls at rest
+        //   strong  emphasis borders (outline control at rest)
+        //   hover   the interactive partner to `strong`
+        hairline: {
+          soft: 'rgba(0, 0, 0, 0.08)',
+          DEFAULT: 'rgba(0, 0, 0, 0.10)',
+          strong: 'rgba(0, 0, 0, 0.16)',
+          hover: 'rgba(0, 0, 0, 0.28)',
+        },
       },
       fontFamily: {
         display: ['var(--font-inter-tight)', 'system-ui', 'sans-serif'],

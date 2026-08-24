@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number]
+import { EASE } from './MotionProvider'
 
 export default function Hero() {
   return (
@@ -44,7 +43,7 @@ export default function Hero() {
             href="#book"
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-accent px-5 py-3 font-sans text-base font-medium text-white transition-colors duration-150 hover:bg-accent-ink"
           >
-            Book a Discovery Call
+            Book a discovery call
           </a>
           <a
             href="#pricing"

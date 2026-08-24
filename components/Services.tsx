@@ -1,6 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
 
 const SERVICES = [
   {
@@ -11,6 +8,7 @@ const SERVICES = [
       </svg>
     ),
     title: 'Website Builds',
+    plans: 'In both plans',
     description:
       'A custom site designed around your business and built to convert. Clean, fast, and live in days rather than months.',
   },
@@ -22,6 +20,7 @@ const SERVICES = [
       </svg>
     ),
     title: 'AI Automation',
+    plans: 'System only',
     description:
       'Automation systems that save time and capture more leads: follow-up sequences, booking flows, CRM sync, and internal workflows.',
   },
@@ -33,22 +32,11 @@ const SERVICES = [
       </svg>
     ),
     title: 'Continuous Support',
+    plans: 'In both plans',
     description:
       'An ongoing monthly retainer for updates, improvements, and support after launch. No lock-in, month-to-month, cancel anytime.',
   },
 ]
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.1 } },
-}
-
-const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number]
-
-const cardVariant = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
-}
 
 export default function Services() {
   return (
@@ -58,11 +46,7 @@ export default function Services() {
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.55 }}
+        <div
           className="mb-16 text-center"
         >
           <h2 id="services-heading" className="font-display font-semibold text-display text-text-primary mb-4">
@@ -72,21 +56,16 @@ export default function Services() {
             Three focused services that cover every layer of your digital presence,
             from launch to long-term growth.
           </p>
-        </motion.div>
+        </div>
 
         {/* Card grid */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-60px' }}
+        <div
           className="grid grid-cols-1 sm:grid-cols-3 gap-5"
         >
           {SERVICES.map((svc) => (
-            <motion.div
+            <div
               key={svc.title}
-              variants={cardVariant}
-              className="group relative p-7 rounded-xl bg-white border border-[rgba(0,0,0,0.10)] shadow-card"
+              className="group relative p-7 rounded-xl bg-white border border-hairline shadow-card"
             >
               <div
                 className="w-11 h-11 rounded-lg bg-accent-tint flex items-center justify-center text-accent-ink mb-5 transition-colors duration-150"
@@ -95,15 +74,19 @@ export default function Services() {
                 {svc.icon}
               </div>
 
-              <h3 className="font-display font-semibold text-[1.05rem] text-text-primary mb-2.5">
+              <h3 className="font-display font-bold text-xl text-text-primary mb-2.5">
                 {svc.title}
               </h3>
               <p className="font-sans text-sm text-text-secondary leading-relaxed">
                 {svc.description}
               </p>
-            </motion.div>
+
+              <span className="mt-5 inline-flex items-center rounded-full border border-hairline bg-surface px-2.5 py-1 font-sans text-xs font-medium text-text-secondary">
+                {svc.plans}
+              </span>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

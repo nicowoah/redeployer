@@ -1,10 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
 import Script from 'next/script'
-
-const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number]
 
 const BOOKING_URL = 'https://calendly.com/sn-rivera/redeployer-discovery-call'
 
@@ -47,45 +44,35 @@ export default function FinalCTA() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="scroll-mt-20 py-24 md:py-28 bg-surface relative border-t border-[rgba(0,0,0,0.08)]"
+      className="scroll-mt-20 py-24 md:py-28 bg-surface relative border-t border-hairline-soft"
     >
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <motion.h2
+        <h2
           id="contact-heading"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: EASE }}
           className="font-display font-semibold text-hero text-text-primary mb-6"
         >
           Ready to move <span className="text-highlight">faster?</span>
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.08 }}
+        <p
           className="font-sans text-lg text-text-secondary max-w-xl mx-auto mb-6 leading-[1.6]"
         >
           Book a free 30-minute call. No pitch deck, no pressure. Just an honest
           conversation about what your business needs.
-        </motion.p>
+        </p>
 
         {/* Reassurance sits above the widget: below it, it is only read after
             the visitor has already booked or left. */}
         <div className="mb-9 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 font-sans text-sm text-text-muted">
           <span>$0 setup fee</span>
-          <span className="h-3 w-px bg-[rgba(0,0,0,0.14)]" aria-hidden="true" />
+          <span className="h-3 w-px bg-hairline" aria-hidden="true" />
           <span>Month-to-month, cancel anytime</span>
-          <span className="h-3 w-px bg-[rgba(0,0,0,0.14)]" aria-hidden="true" />
-          <span>30-day setup guarantee on the System plan</span>
         </div>
 
         <div id="book" className="scroll-mt-20 w-full text-left">
           {status === 'failed' ? (
             /* Booking still has to be possible when the embed cannot load. */
-            <div className="mx-auto max-w-md rounded-xl border border-[rgba(0,0,0,0.10)] bg-white p-8 text-center shadow-card">
+            <div className="mx-auto max-w-md rounded-xl border border-hairline bg-white p-8 text-center shadow-card">
               <h3 className="font-display font-semibold text-xl text-text-primary mb-2">
                 The booking calendar didn&rsquo;t load
               </h3>
@@ -103,7 +90,7 @@ export default function FinalCTA() {
               </a>
             </div>
           ) : (
-            <div className="relative w-full overflow-hidden rounded-xl border border-[rgba(0,0,0,0.10)] bg-white">
+            <div className="relative w-full overflow-hidden rounded-xl border border-hairline bg-white">
               {status === 'loading' && (
                 <div
                   className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 bg-white"
@@ -111,7 +98,7 @@ export default function FinalCTA() {
                   aria-live="polite"
                 >
                   <span
-                    className="h-6 w-6 animate-spin rounded-full border-2 border-[rgba(0,0,0,0.12)] border-t-accent"
+                    className="h-6 w-6 animate-spin rounded-full border-2 border-hairline border-t-accent"
                     aria-hidden="true"
                   />
                   <span className="font-sans text-sm text-text-muted">

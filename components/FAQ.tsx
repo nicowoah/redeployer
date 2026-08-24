@@ -13,10 +13,6 @@ const FAQS = [
     a: "Redeployer Starter ($149/mo) is the storefront: a custom site up to 5 pages, hosting, SSL, uptime monitoring, Google Business Profile setup, and a basic booking request form where clients ask for a time and you confirm it manually. The Redeployer System ($299/mo) runs your front desk on top of that: full ongoing local SEO, booking synced straight to your calendar, missed-call text-back, automated SMS and email reminders, review requests after sessions, and an instant response to every new inquiry.",
   },
   {
-    q: 'Is there a guarantee?',
-    a: "The Redeployer System comes with a 30-day setup guarantee: if you're not happy with how your site and system are built in the first 30 days, we'll refund you in full. Beyond that, there's nothing to guarantee against, because there's no setup fee and no contract. If it stops being worth $299 a month, you cancel.",
-  },
-  {
     q: 'What is missed-call text-back?',
     a: "When you're with a client and can't pick up, the caller automatically gets a text within seconds: a friendly note that you'll be right with them, plus a booking link. Most people who reach voicemail just call the next business on the list. This is the single cheapest way to stop losing them.",
   },
@@ -50,7 +46,7 @@ function FAQItem({ question, answer, id }: { question: string; answer: string; i
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="border-b border-[rgba(0,0,0,0.08)] last:border-0">
+    <div className="border-b border-hairline-soft last:border-0">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-6 text-left gap-8 group"
@@ -58,14 +54,14 @@ function FAQItem({ question, answer, id }: { question: string; answer: string; i
         aria-controls={`faq-panel-${id}`}
         id={`faq-trigger-${id}`}
       >
-        <span className="font-display font-medium text-base md:text-[1.05rem] text-text-primary group-hover:text-accent-ink transition-colors duration-200">
+        <span className="font-display font-medium text-base md:text-lg text-text-primary group-hover:text-accent-ink transition-colors duration-200">
           {question}
         </span>
         <div
           className={`flex-shrink-0 w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
             open
               ? 'border-accent bg-accent text-white'
-              : 'border-[rgba(0,0,0,0.12)] text-text-muted'
+              : 'border-hairline text-text-muted'
           }`}
           aria-hidden="true"
         >
@@ -96,7 +92,7 @@ function FAQItem({ question, answer, id }: { question: string; answer: string; i
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             className="overflow-hidden"
           >
-            <p className="font-sans text-text-secondary text-[0.96rem] leading-[1.75] pb-6 pr-14">
+            <p className="max-w-[68ch] font-sans text-base text-text-secondary leading-[1.75] pb-6 pr-14">
               {answer}
             </p>
           </motion.div>
@@ -113,29 +109,21 @@ export default function FAQ() {
       <div className="divider-subtle absolute bottom-0 left-0 right-0" aria-hidden="true" />
 
       <div className="max-w-3xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.55 }}
+        <div
           className="text-center mb-12"
         >
           <h2 id="faq-heading" className="font-display font-semibold text-display text-text-primary">
             Common Questions
           </h2>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.55, delay: 0.1 }}
-          className="rounded-xl bg-white border border-[rgba(0,0,0,0.10)] shadow-card px-8"
+        <div
+          className="rounded-xl bg-white border border-hairline shadow-card px-8"
         >
           {FAQS.map(({ q, a }, i) => (
             <FAQItem key={q} question={q} answer={a} id={String(i)} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

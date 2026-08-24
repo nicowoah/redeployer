@@ -72,7 +72,7 @@ const jsonLd = {
       '@type': 'Offer',
       name: 'Redeployer Starter',
       description:
-        'Website and Google Business. Custom-designed site up to 5 pages, hosting, SSL and uptime monitoring, Google Business Profile setup, a basic booking request form, and mobile-optimized fast load times. No setup fee, cancel anytime.',
+        'Website and Google Business. A custom-designed site up to 5 pages, ongoing edits and modifications handled for you, hosting, SSL and security monitoring, a lead capture form that routes inquiries straight to your inbox, Google Business Profile setup, and mobile-optimized fast load times. No setup fee, cancel anytime.',
       priceSpecification: {
         '@type': 'UnitPriceSpecification',
         price: '149',
@@ -85,7 +85,7 @@ const jsonLd = {
       '@type': 'Offer',
       name: 'Redeployer System',
       description:
-        'The full end-to-end system for running your front desk. Everything in Starter plus ongoing local SEO optimization, online booking synced to your calendar, missed-call text-back, automated SMS and email appointment reminders, automatic review requests after sessions, and an instant response to every new inquiry. No setup fee, cancel anytime, 30-day setup guarantee.',
+        'The full end-to-end system for running your front desk. Everything in Starter plus ongoing local SEO optimization, online booking synced to your calendar, missed-call text-back, automated SMS and email appointment reminders, automatic review requests after sessions, and an instant response to every new inquiry. No setup fee, cancel anytime.',
       priceSpecification: {
         '@type': 'UnitPriceSpecification',
         price: '299',
