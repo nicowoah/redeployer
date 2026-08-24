@@ -18,6 +18,10 @@ export default function Nav() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
+    // Browsers restore scroll position on refresh, and an anchor link lands
+    // mid-page, so sync once on mount — the listener alone would leave the bar
+    // transparent over content until the next scroll event.
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
